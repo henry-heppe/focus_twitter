@@ -1,0 +1,16 @@
+{
+    "name": "Focus Twitter",
+    "description": "Removes everything except bookmarks from Twitter",
+    "version": "1.0",
+    "permissions": ["tabs", "activeTab"],
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["*://twitter.com/*", "*://x.com/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "icons": {
+        "48": "icon.png"
+    }
+  }
