@@ -17,26 +17,34 @@ const observer = new MutationObserver(() => {
     toRemove.push('[data-testid="sidebarColumn"]');
     toRemove.push('[data-testid="DMDrawerHeader"]');
 
-
-    for(var i=0;i<toRemove.length;i++) {
+    for (var i = 0; i < toRemove.length; i++) {
         console.log(toRemove[i]);
         item = document.querySelector(toRemove[i]);
-        if(item != null) {
+        if (item != null) {
             item.style.visibility = 'hidden';
         }
     }
 
-        items = document.querySelectorAll('[data-testid="unlike"]');
-        if(items.length != 0) {
-            for(var j=0;j<items.length;j++) {
+    items = document.querySelectorAll('[data-testid="unlike"]');
+    if (items.length != 0) {
+        for (var j = 0; j < items.length; j++) {
+            tweet = items[j].closest('[data-testid="tweet"]')
+            tweet.remove();
+        }
+    }
+
+    items = document.querySelectorAll('span');
+    if (items.length != 0) {
+        for (var j = 0; j < items.length; j++) {
+            if (items[j].textContent == 'Gesponsert') {
                 tweet = items[j].closest('[data-testid="tweet"]')
-                tweet.remove();
+                tweet.style.visibility = 'hidden';
             }
         }
-  });
-  
+    }
+});
+
 observer.observe(document.body, { childList: true, subtree: true });
 
 
-  
-  
+
